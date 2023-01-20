@@ -1,4 +1,11 @@
-# Quarkus Microservice Demo Project
+# Quarkus Microservice Demo Project [![Twitter](https://img.shields.io/twitter/follow/piotr_minkowski.svg?style=social&logo=twitter&label=Follow%20Me)](https://twitter.com/piotr_minkowski)
+
+[![CircleCI](https://circleci.com/gh/piomin/sample-quarkus-microservice.svg?style=svg)](https://circleci.com/gh/piomin/sample-quarkus-microservice)
+
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-black.svg)](https://sonarcloud.io/dashboard?id=piomin_sample-quarkus-microservice)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=piomin_sample-quarkus-microservice&metric=bugs)](https://sonarcloud.io/dashboard?id=piomin_sample-quarkus-microservice)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=piomin_sample-quarkus-microservice&metric=coverage)](https://sonarcloud.io/dashboard?id=piomin_sample-quarkus-microservice)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=piomin_sample-quarkus-microservice&metric=ncloc)](https://sonarcloud.io/dashboard?id=piomin_sample-quarkus-microservice)
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
