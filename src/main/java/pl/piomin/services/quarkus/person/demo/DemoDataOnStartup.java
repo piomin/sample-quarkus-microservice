@@ -7,9 +7,9 @@ import pl.piomin.services.quarkus.person.model.Gender;
 import pl.piomin.services.quarkus.person.model.Person;
 import pl.piomin.services.quarkus.person.repository.PersonRepository;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.event.Observes;
-import javax.transaction.Transactional;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.event.Observes;
+import jakarta.transaction.Transactional;
 
 @ApplicationScoped
 public class DemoDataOnStartup {
