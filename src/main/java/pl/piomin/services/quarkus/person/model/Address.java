@@ -1,6 +1,6 @@
 package pl.piomin.services.quarkus.person.model;
 
-import javax.persistence.Embeddable;
+import jakarta.persistence.Embeddable;
 
 @Embeddable
 public class Address {
