@@ -27,6 +27,14 @@ public class PersonResource {
                 .list();
     }
 
+//    @GET
+//    @Path("/v2")
+//    public List<Person> findAllV2() {
+//        logger.info("IN -> findAllV2");
+//        return repository.findAll()
+//                .list();
+//    }
+
     @GET
     @Path("/name/{name}")
     public List<Person> findByName(@PathParam("name") String name) {

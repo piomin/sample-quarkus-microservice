@@ -73,6 +73,10 @@
       <artifactId>quarkus-resteasy</artifactId>
     </dependency>
     <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-logging-json</artifactId>
+    </dependency>
+    <dependency>
       <groupId>net.datafaker</groupId>
       <artifactId>datafaker</artifactId>
       <version>1.8.1</version>
