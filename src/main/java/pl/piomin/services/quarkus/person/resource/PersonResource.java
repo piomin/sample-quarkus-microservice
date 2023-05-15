@@ -1,5 +1,6 @@
 package pl.piomin.services.quarkus.person.resource;
 
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponseSchema;
 import org.jboss.logging.Logger;
 import pl.piomin.services.quarkus.person.model.Person;
 import pl.piomin.services.quarkus.person.repository.PersonRepository;
@@ -21,6 +22,7 @@ public class PersonResource {
     }
 
     @GET
+    @APIResponseSchema(Person.class)
     public List<Person> findAll() {
         logger.info("IN -> findAll");
         return repository.findAll()
