@@ -1,0 +1,130 @@
+openapi: 3.0.3
+info:
+  title: person-service API
+  version: 1.0.0-SNAPSHOT
+paths:
+  /persons:
+    get:
+      tags:
+        - Person Resource
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Person'
+              examples:
+                wick_persons:
+                  value: |-
+                    [
+                       {"id": 1, "name": "John Wick", "age": 18, "gender": "MALE", "externalId": 100},
+                       {"id": 2, "name": "Bruce Wayne", "age": 38, "gender": "MALE", "externalId": 200}
+                    ]
+  /persons/name/{name}:
+    get:
+      tags:
+        - Person Resource
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Person'
+  /persons/{id}:
+    get:
+      tags:
+        - Person Resource
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            format: int64
+            type: integer
+          examples:
+            john_wick:
+              summary: Main id of person
+              value: 1
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+              examples:
+                john_wick:
+                  value: |- 
+                    {"id": 1, "name": "John Wick", "age": 18, "gender": "MALE", "externalId": 100}
+components:
+  schemas:
+    Address:
+      type: object
+      properties:
+        street:
+          title: Street
+          type: string
+          example: Test Street
+        city:
+          title: Name of city
+          type: string
+          example: Warsaw
+        flatNo:
+          format: int32
+          title: Number of flat
+          type: integer
+          example: 18
+        buildingNo:
+          format: int32
+          title: Number of building
+          type: integer
+          example: 100
+    Gender:
+      enum:
+        - MALE
+        - FEMALE
+      type: string
+    Person:
+      type: object
+      properties:
+        id:
+          format: int64
+          title: Main id of person
+          type: integer
+          example: 1
+        name:
+          title: Name of person
+          type: string
+          example: John Wick
+        age:
+          format: int32
+          title: Age of person
+          type: integer
+          example: 18
+        gender:
+          title: Gender of person
+          enum:
+            - MALE
+            - FEMALE
+          type: string
+          allOf:
+            - $ref: '#/components/schemas/Gender'
+        externalId:
+          format: int32
+          title: External identificator of person
+          type: integer
+          example: 100
+        address:
+          $ref: '#/components/schemas/Address'
