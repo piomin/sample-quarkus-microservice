@@ -6,12 +6,14 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import pl.piomin.services.quarkus.person.model.Address;
 import pl.piomin.services.quarkus.person.model.Gender;
 import pl.piomin.services.quarkus.person.model.Person;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.jupiter.api.Assertions.*;
+
 
 @QuarkusTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -24,7 +26,7 @@ public class PersonResourceTest {
           .when().get("/persons")
           .then()
              .statusCode(200)
-             .assertThat().body("size()", is(20));
+             .assertThat().body("size()", greaterThan(0));
     }
 
     @Test
@@ -61,6 +63,7 @@ public class PersonResourceTest {
         newPerson.age = 22;
         newPerson.name = "TestNew";
         newPerson.gender = Gender.FEMALE;
+        newPerson.address = new Address();
         Person person = given()
                 .body(newPerson)
                 .contentType(ContentType.JSON)

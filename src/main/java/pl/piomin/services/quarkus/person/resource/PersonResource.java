@@ -1,5 +1,7 @@
 package pl.piomin.services.quarkus.person.resource;
 
+import jakarta.transaction.Transactional;
+import jakarta.ws.rs.POST;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponseSchema;
 import org.jboss.logging.Logger;
 import pl.piomin.services.quarkus.person.model.Person;
@@ -19,6 +21,14 @@ public class PersonResource {
     public PersonResource(PersonRepository repository, Logger logger) {
         this.repository = repository;
         this.logger = logger;
+    }
+
+    @POST
+    @Transactional
+    public Person add(Person person) {
+        logger.infof("IN -> add(%s)", person);
+        repository.persist(person);
+        return person;
     }
 
     @GET

@@ -2,6 +2,7 @@ package pl.piomin.services.quarkus.person.model;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.eclipse.microprofile.openapi.annotations.media.SchemaProperty;
@@ -25,5 +26,17 @@ public class Person extends PanacheEntityBase {
     public Gender gender;
     public Integer externalId;
     @Embedded
+    @Nullable
     public Address address;
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", gender=" + gender +
+                ", externalId=" + externalId +
+                '}';
+    }
 }
