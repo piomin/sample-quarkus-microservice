@@ -56,6 +56,21 @@ mvn package -Pnative -Dquarkus.native.container-build=true
 
 You can then execute your native executable with: `./target/sample-quarkus-microservice-1.0.0-SNAPSHOT-runner`
 
+## Running on Kubernetes
+
+First, you need to install Postgres on Kubernetes, e.g. with Helm:
+```shell
+$ helm install person-db bitnami/postgresql -n sample-quarkus --set auth.username=quarkus  --set auth.database=quarkus --set fullnameOverride=person-db --create-namespace
+```
+
+Then, you can build and deploy the app within one step with Maven by activating the `kubernetes` profile:
+```shell
+$ QUARKUS_JIB_BASE_JVM_IMAGE=registry.access.redhat.com/ubi8/openjdk-17-runtime:latest  mvn clean package -DskipTests -Pkubernetes
+```
+
+Or, with the `minikube` profile for running on Minikube.
+
+
 If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.
 
 ## Related Guides
