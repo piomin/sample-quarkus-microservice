@@ -1,15 +1,16 @@
 package pl.piomin.services.quarkus.person.resource;
 
 import jakarta.transaction.Transactional;
+import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponseSchema;
 import org.jboss.logging.Logger;
+import org.jboss.logging.MDC;
 import pl.piomin.services.quarkus.person.model.Person;
 import pl.piomin.services.quarkus.person.repository.PersonRepository;
 
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
 import java.util.List;
 
 @Path("/persons")
@@ -26,8 +27,9 @@ public class PersonResource {
     @POST
     @Transactional
     public Person add(Person person) {
-        logger.infof("IN -> add(%s)", person);
         repository.persist(person);
+        MDC.put("personId", person.id);
+        logger.infof("IN -> add(%s)", person);
         return person;
     }
 
@@ -57,6 +59,7 @@ public class PersonResource {
     @GET
     @Path("/{id}")
     public Person findById(@PathParam("id") Long id) {
+        MDC.put("personId", id);
         logger.infof("IN -> findById(%d)", id);
         return repository.findById(id);
     }
