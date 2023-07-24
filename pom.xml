@@ -212,7 +212,6 @@
       <properties>
         <quarkus.kubernetes.deploy>true</quarkus.kubernetes.deploy>
         <quarkus.container-image.registry>image-registry.openshift-image-registry.svc:5000</quarkus.container-image.registry>
-        <quarkus.profile>openshift</quarkus.profile>
       </properties>
     </profile>
     <profile>
