@@ -75,7 +75,7 @@
 #   accessed directly. (example: "foo.example.com,bar.example.com")
 #
 ###
-FROM registry.access.redhat.com/ubi8/openjdk-17:1.21-1.1741864856
+FROM registry.access.redhat.com/ubi8/openjdk-17:1.21-1.1743444176
 
 ENV LANGUAGE='en_US:en'
 
