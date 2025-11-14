@@ -26,7 +26,7 @@ public class Person extends PanacheEntityBase {
     public Gender gender;
     public Integer externalId;
     @Embedded
-    @Nullable
+//    @Nullable
     public Address address;
 
     @Override
