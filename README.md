@@ -58,18 +58,30 @@ You can then execute your native executable with: `./target/sample-quarkus-micro
 
 ## Running on Kubernetes
 
-First, you need to install Postgres on Kubernetes, e.g. with Helm:
+This section provides detailed instructions for deploying the Person Service application on Kubernetes with PostgreSQL database.
+
+### Prerequisites
+
+Before deploying the application, ensure you have the following tools installed:
+
+- **Java**: JDK 17 or later (recommended: OpenJDK 17+)
+- **Maven**: 3.8.1 or later
+- **Docker**: 20.10 or later (for building container images)
+- **Kubernetes CLI (kubectl)**: 1.25 or later
+- **Helm**: 3.x (for PostgreSQL installation)
+- **Kubernetes Cluster**: One of the following:
+    - Minikube 1.30+ (for local development)
+    - Docker Desktop with Kubernetes enabled
+    - Any managed Kubernetes cluster (GKE, EKS, AKS, etc.)
+
+Verify your installations:
 ```shell
-$ helm install person-db bitnami/postgresql -n sample-quarkus --set auth.username=quarkus  --set auth.database=quarkus --set fullnameOverride=person-db --create-namespace
+java -version
+mvn -version
+docker --version
+kubectl version --client
+helm version
 ```
-
-Then, you can build and deploy the app within one step with Maven by activating the `kubernetes` profile:
-```shell
-$ QUARKUS_JIB_BASE_JVM_IMAGE=registry.access.redhat.com/ubi8/openjdk-17-runtime:latest  mvn clean package -DskipTests -Pkubernetes
-```
-
-Or, with the `minikube` profile for running on Minikube.
-
 
 If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.
 
@@ -95,3 +107,5 @@ Easily start your RESTful Web Services
 Monitor your application's health using SmallRye Health
 
 [Related guide section...](https://quarkus.io/guides/smallrye-health)
+
+
