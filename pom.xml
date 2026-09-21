@@ -18,6 +18,7 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <quarkus.platform.version>3.39.4</quarkus.platform.version>
     <skipITs>true</skipITs>
+    <sonar-maven-plugin.version>5.1.0.4751</sonar-maven-plugin.version>
     <surefire-plugin.version>3.5.6</surefire-plugin.version>
   </properties>
 
@@ -141,6 +142,11 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>${sonar-maven-plugin.version}</version>
       </plugin>
       <plugin>
         <groupId>org.jacoco</groupId>
