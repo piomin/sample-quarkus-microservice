@@ -19,7 +19,7 @@
     <quarkus.platform.version>3.39.5</quarkus.platform.version>
     <skipITs>true</skipITs>
     <sonar-maven-plugin.version>5.8.0.7211</sonar-maven-plugin.version>
-    <surefire-plugin.version>3.5.6</surefire-plugin.version>
+    <surefire-plugin.version>3.6.0</surefire-plugin.version>
   </properties>
 
   <dependencyManagement>
